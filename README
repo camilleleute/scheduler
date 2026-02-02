@@ -2,3 +2,51 @@ Camille Leute
 
 What happens to response time with RR as quantum lengths increase? 
 As the RR quantum increases, the average response time increases, making it so that RR begins to have FCFS like behavior.
+
+Scheduler Simulator
+This assignment may be done in pairs
+
+This assignment is about material covered in Chapters 7 of OS: Three Easy Pieces. You are well-advised to read these chapters to successfully complete this project. A skeleton Download skeletonis provided.
+
+At a high level, your goal of this assignment is to create a process (i.e. job) scheduler simulator that supports multiple scheduling algorithms, multiple CPUs, and computes the turnaround, response, and wait times for each job submitted to the simulator. 
+
+Specifically, your simulator should:
+
+Read in a list of jobs from a plaintext file, which are described by their task ID (tid), priority, and run times (in generic “time units,” which shall only be represented as integers).
+Based on the selected scheduling algorithm and number of CPUs, count time units forward, make the correct scheduling decisions, and track the statistics necessary for computing turnaround and wait times. Note: this is a simulator, meaning it should not synchronize with any units of real, wall-clock time.
+Output a series of statistics for each task. (printing code is included in skeleton)
+Finally, compute and display the average wait, turnaround, and response times for all simulated jobs.  (printing code is included in skeleton)
+Executable
+The usage of the simulator must conform to:
+
+./scheduler -f <schedule.txt> -a <ALGORITHM> -q <QUANTUM (optional)> -c <NUMBER_CPUs>
+
+schedule.txt contains a list of tasks
+ALGORITHM is an string that defines the scheduling algorithm the simulator will use. Your scheduler should support:
+FCFS
+SJF
+SRTF (preemptive SJF)
+RR
+QUANTUM is the length of time, given as an integer, when round-robin is used. 
+NUMBER_CPUs is the number of CPUs to simulate.
+Tie breakers:
+First tie-breaker is priority value (higher value has higher priority)
+Second tie-breaker is process ID (lower value has higher priority)
+Grading
+I'm including a test script Download test scriptwith 15 different tests. I reserve the right to run the same tests but with different process lists. You can run the test script with --no-cleanup to leave the generated files in your directory to use and compare against the expected outputsLinks to an external site.. Note that my test output does not expect you to implement CPU affinity, but I want you to match my output exactly.
+
+Code cleanliness and maintainability is also considered when grading.
+
+Deliverables
+Submit a gzip’d tar archive file (*.tgz) with all your source code (no binaries) that runs on the CSL UNIX machines, e.g. unix1.csc.calpoly.edu. If you worked with partner, both members should submit their work. It must include the following:
+
+Your source files (and header file(s), if necessary). 
+A makefile (called Makefile) that will build a scheduler executable. 
+A README file that contains:
+Your name (and your partner’s name, if you have one)
+Any special instructions.
+Any other things you want me to know while I am grading it, and
+Answer to the question below.
+The README file should be plaintext, i.e, not a Word document, and should be named README, all capitals with no extension.
+Question
+What happens to response time with RR as quantum lengths increase? 
